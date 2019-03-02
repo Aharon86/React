@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import Box from './Box';
 
 class CreateRow extends Component{
-    
+    createBox = () =>{
+        
+        console.log(this.props.data);
+    }
     render() {
         return (
             <div>
-                {this.props.row.action}
+                {this.createBox()}
             </div>
         );
     }
