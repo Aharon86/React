@@ -1,8 +1,10 @@
-header{
-    display: flex;
-    justify-content: space-around;
+table{
+    width: 100%;
+    border-collapse: collapse;
 }
-footer{
-    display: flex;
-    justify-content: flex-start;
+tr:not( :last-child ) td, th{
+    border: 1px solid #DDDDDD;
+}
+tr:nth-child(even){
+    background: #DDDDDD;
 }

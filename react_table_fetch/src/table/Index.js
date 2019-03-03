@@ -11,6 +11,9 @@ class Project extends Component{
     state = {
         data: []
     }
+    componentDidMount = () => {
+        this.sendData();
+      }
 
     sendData = () => {
        let data = arrData();
@@ -22,32 +25,38 @@ class Project extends Component{
             }
         })
         .then(res => res.json())
-        .then((response) => {this.setState({data: response}),})
+        .then((response) => {this.setState({data: response})})
         .catch(error => console.error('Error:', error));
 
     }
 
-    // showRow = () => {
-    //     beackData = this.sendData().then((results) => {return results;});
-    //     console.log(beackData);
-    //     let arrComp = [];
-    //     for (let i = 0; i < beackData.length; i++) {
-    //         arrComp.push(<CreateRow row = {beackData[i]} />);
+
+    showRow = () => {
+        let beackData = this.state.data;
+        let arrComp = [];
+        if (beackData.length === 0) {
+           arrComp.push(<CreateRow row_table = "Load..." key={1} />);
+        } else{
+            for (let i = 0; i < beackData.length; i++) {
+                arrComp.push(<CreateRow row_table = {beackData[i]} key = {i} />);
+                
+            }
             
-    //     }
-    //     console.log(arrComp);
-    //     return arrComp;
-    // }
+        }
+        return arrComp;
+        
+    }
 
     render() {
-        // this.sendData();
+        
         return (
-            <section>
+            <table>
                 <Header />
-                {/* {this.sendData()} */}
-                <CreateRow data={this.state.data} />
-                <Footer />
-            </section>
+                <tbody>
+                    {this.showRow()}
+                    <Footer />
+                </tbody>
+            </table>
         );
     }
 }

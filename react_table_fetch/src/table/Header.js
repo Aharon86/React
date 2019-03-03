@@ -3,16 +3,18 @@ import React, { Component } from 'react';
 class Header extends Component{
     render() {
         return (
-            <header>
-                <div>Status</div>
-                <div>Game Number</div>
-                <div>Player 1</div>
-                <div>Player 2</div>
-                <div>Round</div>
-                <div>Amount</div>
-                <div>Time</div>
-                <div>Action</div>
-            </header>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Game Number</th>
+                    <th>Player 1</th>
+                    <th>Player 2</th>
+                    <th>Round</th>
+                    <th>Amount</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
         );
     }
 }

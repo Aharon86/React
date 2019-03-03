@@ -4,9 +4,9 @@ class Box extends Component{
   
     render() {
         return (
-            <div>
-                
-            </div>
+            <td>
+                {this.props.cell_table}
+            </td>
         );
     }
 }
