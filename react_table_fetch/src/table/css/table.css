@@ -5,6 +5,9 @@ table{
 tr:not( :last-child ) td, th{
     border: 1px solid #DDDDDD;
 }
-tr:nth-child(even){
+tr:nth-child(even):not( :last-child ){
     background: #DDDDDD;
+}
+tr:not( :last-child ):hover{
+    background: mediumspringgreen;
 }
