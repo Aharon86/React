@@ -13,27 +13,29 @@ class Clock extends Component{
         console.log(1);
     } 
     change = () => {
-        console.log(this.state.value);
-        let minute = this.state.value * 6;
-        let duration = this.state.value * 0.1;
+        let inp = this.text.value;
+        let minute = inp * 6;
+        let duration = inp * 0.1;
         let hour = minute / 12;
         this.setState({
             styleMinute:{
-                transform: 'rotate('+minute+'deg)',
-                transitionDuration: duration+'s'
+                transform: 'rotate(' + minute + 'deg)',
+                transitionDuration: duration + 's'
             },
             styleHour: {
-                transform: 'rotate('+hour+'deg)',
-                transitionDuration: duration+'s'
+                transform: 'rotate(' + hour + 'deg)',
+                transitionDuration: duration + 's'
             }
         });
     }
     render() {
+        console.log(1);
         return (
             <section>
                 <div className='inp'>
                 Write a minute:  
-                    <input type='text' value = {this.state.value} onChange ={this.changeInput} />
+                    {/* <input type='text' value = {this.state.value} onChange ={this.changeInput} /> */}
+                    <input type='text' ref = {el => this.text = el } />
                     <button onClick ={this.change}>Change</button>
                 </div>
                 <div className='clock'>
