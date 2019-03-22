@@ -35,14 +35,14 @@ body{
     position: absolute;
     border-radius: 7px;
     cursor: pointer;
+    &:hover{
+        color: red;
+    }
 }
-#closeForm:hover{
-    color: red;
-}
+
 .wrapper{
     background: linear-gradient(to bottom right, rgba(42, 245, 153, 0.6), rgba(0, 157, 252, 0.5)) fixed;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -133,6 +133,9 @@ li{
     padding-left: 2%;
     padding-right: 9%;
     display: block;
+    &:focus{
+        outline: none;
+    }
 }
 .right{
     background: url("../image/iconfinder_check.png") no-repeat right center;
@@ -146,9 +149,7 @@ li{
     padding-left: 2%;
     display: inline-block;
 }
-#form_1>label>input:focus, #form_2>label>input:focus {
-    outline: none;
-}
+
 ::placeholder{
     color: wheat;
 }
@@ -159,32 +160,16 @@ button{
     padding: 8px 30px;
     margin-top: 2%;
 }
-#form_1{
-    z-index: 2;
-}
-#form_2{
-    z-index: 1;
-}
 
 
 
 /* media style */
 @media only screen and (max-width: 754px) {
-    body{
-        display: flex;
-        flex-direction: column;
-        justify-content: normal;
-        /* align-items: flex-start; */
-        /* height: inherit; */
-    }
+   
     html, body, #root, .wrapper{
         height: fit-content;
     }
-    // #root{
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: normal;
-    // }
+
     .container{
         display: flex;
         flex-direction: column;
