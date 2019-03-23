@@ -7,7 +7,8 @@ import Li from './Li';
 class Form extends Component{
     state = {
         sign: this.props.signUpIn,
-        responseData: {}
+        responseData: false,
+        massageText:''
     }
 
     inputs = {};
@@ -82,6 +83,26 @@ class Form extends Component{
             .catch(error => console.error('Error:', error));
             // console.log(this.state.responseData);
     }
+    // Lifecicle
+    
+    componentDidUpdate(prevProps, prevState){
+        if (prevState.responseData !== this.state.responseData) {
+            this.massage('Information received');
+        }
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (!this.state.responseData) {
+            console.log(1);
+            this.massage('Information sent');
+            return true;
+        }else{
+            return false;
+        }
+    }
+    massage = (text) => {
+        this.setState({massageText: text})
+    }
+    // ------------------------------
 
     writeData = () => {
         // console.log(this.state.responseData);
@@ -109,6 +130,7 @@ class Form extends Component{
                 
                 <div id = 'closeForm' onClick = {this.props.callback}>&#x02A2F;</div>
                     <div className="item_1">
+                        <p>{this.state.massageText}</p>
                         <ul>
                             {this.writeData()}
                         </ul>
