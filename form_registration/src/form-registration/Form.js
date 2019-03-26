@@ -91,13 +91,17 @@ class Form extends Component{
         }
     }
     shouldComponentUpdate(nextProps, nextState) {
-        if (!this.state.responseData) {
-            console.log(1);
-            this.massage('Information sent');
+        if (nextState.responseData !== this.state.responseData) {
+            console.log("SHOULDCOMPONENTUPDATE -- Information sent");
             return true;
-        }else{
-            return false;
         }
+        return true; 
+    }
+    getSnapshotBeforeUpdate(prevProps, prevState){
+        if (prevState.responseData !== this.state.responseData) {
+            console.log("GetSnapshot");
+        }
+        return null;
     }
     massage = (text) => {
         this.setState({massageText: text})
