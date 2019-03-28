@@ -2,25 +2,20 @@ import React, { Component } from 'react';
 import reducer from "./reducers";
 import {changeText, incrementNumber, decrementNumber} from "./actions";
 import {createStore, applyMiddleware  } from 'redux';
-import thunk  from 'redux-thunk';
+// import thunk  from 'redux-thunk';
 
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer);
 
 
 
  class ReduxEx extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            changeName:store.getState().changeName,
-            count: store.getState().counter
+    state = {
+            store:store.getState()
         };
-        store.subscribe(() => this.setState({
-            changeName: store.getState().changeName, 
-            count: store.getState().counter
-        }));
-    }
+
+    hello = store.subscribe(() => this.setState({store: store.getState()}));
+   
     changeText = () => {
         store.dispatch(changeText("Mamikonyan"))
     }
@@ -32,12 +27,12 @@ const store = createStore(reducer, applyMiddleware(thunk));
     }
     render(){
        const state = store.getState();
-       console.log(state, "state", store, "store", store.getState(), "get state")
+    //    console.log(state, "state", store, "store", store.getState(), "get state")
         return(
            <div>
-                <p>{this.state.changeName}</p>
+                <p>{state.changeName}</p>
                 <button onClick={this.changeText}>Change text</button>
-                <p>{this.state.count}</p>
+                <p>{state.counter}</p>
                 <button onClick={this.incriment}>Incriment</button>
                 <button onClick={this.decrement}>Decrement</button>
            </div>
