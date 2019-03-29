@@ -6,6 +6,8 @@ function counter(state = 0, action) {
             return state + 1 
             case "DECREMENT" : 
             return state -1
+            case "RESET" :
+            return 0
             default :
             return state 
         }
@@ -22,6 +24,7 @@ function counter(state = 0, action) {
     }
 
 
-    const reducer = combineReducers({counter, changeName});
+     const reducer = combineReducers({counter, changeName});
       
-    export default reducer;
+      export default reducer;
+

@@ -17,3 +17,10 @@ export function decrementNumber(number){
         number
     }
 };
+
+export function resetNumber(number){
+    return {
+        type: "RESET",
+        number
+    }
+};
