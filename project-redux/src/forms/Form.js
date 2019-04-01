@@ -6,15 +6,20 @@ import {newData} from './actions';
 class Form extends Component{
 
     click = () => {
-        console.log(this.name.value, this.surname.value);
+        this.props.newData(this.name.value, this.surname.value);
+
     }
     
     render (){
+        console.log(this.props.user.name);
         return (
             <div>
                 <input type = 'text' ref = {e => this.name = e } />
                 <input type = 'text' ref = {e => this.surname = e }/>
                 <button onClick = {this.click}>Send</button>
+                <p>Name: {this.props.user.name}</p>
+                <p>Surname: {this.props.user.surname}</p>
+                
             </div>
         );
     }
@@ -22,15 +27,16 @@ class Form extends Component{
 
 const mapStateToProps = (state) => {
         return {
-            name: state.createData
+            user: state.createData
         }
     }
   
 const mapDispatchToProps = (dispatch) => {
-        return bindActionCreators({ 
-            newData
-        },
-         dispatch)
-    }
+        return bindActionCreators(
+            { 
+                newData
+            },
+            dispatch
+        )}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

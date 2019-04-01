@@ -1,7 +1,7 @@
-export function newData(data){
+export function newData(name, surname){
     return {
         type: 'GET_DATA',
-        data.name,
-        data.surname
+        name,
+        surname
     }
 }
